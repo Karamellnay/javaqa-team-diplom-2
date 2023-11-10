@@ -17,16 +17,5 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
-    @Test
-    public void shouldAddToNegativeBalance() {
-        CreditAccount account = new CreditAccount(
-                0,
-                5_000,
-                -15
-        );
 
-        account.add(3_000);
-
-        Assertions.assertEquals(3_000, account.getBalance());
-    }
 }

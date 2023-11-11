@@ -36,8 +36,7 @@ public class CreditAccountTest {
                 5_000,
                 15
         );
-        boolean actual = account.add(300);
-        Assertions.assertFalse(actual);
+        account.add(300);
 
         Assertions.assertEquals(200, account.getBalance());
     }
@@ -69,9 +68,21 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void doNotShouldAddToZeroAmount() {
+    public void doNotShouldAddToAmount() {
         CreditAccount account = new CreditAccount(
                 100,
+                5_000,
+                15
+        );
+        boolean actual = account.add(0);
+        Assertions.assertFalse(actual);
+
+        Assertions.assertEquals(100, account.getBalance());
+    }
+    @Test
+    public void doNotShouldAddToZeroAmount() {
+        CreditAccount account = new CreditAccount(
+                0,
                 5_000,
                 15
         );

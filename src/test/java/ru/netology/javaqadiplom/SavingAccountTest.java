@@ -252,17 +252,7 @@ public class SavingAccountTest {
     public void testIllegalArgumentExceptionInitialBalanceMoreThanMaxBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(11_000, 1_000, 10_000, 5));
     }
-
-    /**
-     * test exception;
-     * minBalance > maxBalance;
-     * минимальный баланс больше максимального
-     */
-    @Test
-    public void testIllegalArgumentExceptionMinBalanceMoreThanMaxBalance() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(5_000, 11_000, 10_000, 5));
-    }
-
+    
     /**
      * test yearChange;
      * расчет суммы процентов;

@@ -4,11 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class SavingAccountTest {
-    /**
-     * test add;
-     * initialBalance + amount < MaxBalance;
-     * Баланс после пополнения меньше максимального
-     */
+
     @Test
     public void shouldAddLessThanMaxBalance() {
         SavingAccount account = new SavingAccount(
@@ -22,6 +18,7 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(2_000 + 3_000, account.getBalance());
     }
+
 
     /**
      * test add;
@@ -323,3 +320,6 @@ public class SavingAccountTest {
     }
 
 }
+
+}
+

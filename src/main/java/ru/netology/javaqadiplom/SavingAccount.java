@@ -14,34 +14,17 @@ public class SavingAccount extends Account {
      * Создаёт новый объект сберегательного счёта с заданными параметрами.
      * Если параметры некорректны (мин. баланс больше максимального и так далее), то
      * должно выкидываться исключения вида IllegalArgumentException.
-     * @param initialBalance - начальный баланс
-     * @param minBalance - минимальный баланс
-     * @param maxBalance - максимальный баланс
+     * @param initialBalance - начальный баланс..
+     * @param minBalance - минимальный баланс.
+     * @param maxBalance - максимальный баланс.
      * @param rate - неотрицательное число, ставка в процентах годовых на остаток
      */
     public SavingAccount(int initialBalance, int minBalance, int maxBalance, int rate) {
         if (rate < 0) {
             throw new IllegalArgumentException(
-                    "Накопительная ставка не может быть отрицательной, а у вас: " + rate
+              "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
-        if (minBalance < 0) {
-            throw new IllegalArgumentException(
-                    "Минимальный баланс не может быть отрицательным, а у вас: " + minBalance
-            );
-        }
-
-        if (initialBalance < minBalance) {
-            throw new IllegalArgumentException(
-                    "Баланс не может быть меньше минимального баланса, а у вас: " + initialBalance
-            );
-        }
-        if (initialBalance > maxBalance) {
-            throw new IllegalArgumentException(
-                    "Баланс не может быть больше максимального баланса, а у вас: " + initialBalance
-            );
-        }
-
         this.balance = initialBalance;
         this.minBalance = minBalance;
         this.maxBalance = maxBalance;
@@ -62,17 +45,18 @@ public class SavingAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        if (balance - amount < minBalance) {
+        balance = balance - amount;
+        if (balance > minBalance) {
+            return true;
+        } else {
             return false;
         }
-        balance -= amount;
-            return true;
-        }
+    }
 
     /**
      * Операция пополнения карты на указанную сумму.
      * В результате успешного вызова этого метода, баланс должен увеличиться.
-     * на сумму покупки. Если же операция может привести к некорректному
+     * на сумму покупки. Если же операция может привести к некорректному.
      * состоянию счёта, то операция должна.
      * завершиться вернув false и ничего не поменяв на счёте.
      * @param amount - сумма пополнения.
@@ -85,8 +69,8 @@ public class SavingAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        if (balance + amount <= maxBalance) {
-            balance += amount;
+        if (balance + amount < maxBalance) {
+            balance = amount;
             return true;
         } else {
             return false;

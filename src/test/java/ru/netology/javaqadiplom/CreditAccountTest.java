@@ -224,4 +224,17 @@ public class CreditAccountTest {
                 }
         );
     }
+    @Test
+    public void getCreditLimit() {
+        CreditAccount account = new CreditAccount(
+                0,
+                8_000,
+                15
+        );
+        int actual = account.getCreditLimit();
+        int expected = 8_000;
+
+        Assertions.assertEquals(expected, actual);
+
+    }
 }

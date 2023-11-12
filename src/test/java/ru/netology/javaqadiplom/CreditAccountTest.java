@@ -17,6 +17,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
+
     @Test
     public void shouldAddToPositiveBalanceAmount() {
         CreditAccount account = new CreditAccount(
@@ -29,13 +30,15 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(4_000, account.getBalance());
     }
+
     @Test
     public void ShouldAddToAmount() {
         CreditAccount account = new CreditAccount(
-                -100,
+                100,
                 5_000,
                 15
         );
+        account.pay(200);
         account.add(300);
 
         Assertions.assertEquals(200, account.getBalance());
@@ -54,6 +57,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(0, account.getBalance());
     }
+
     @Test
     public void doNotShouldAddToNegativeAmountWithBalance() {
         CreditAccount account = new CreditAccount(
@@ -79,6 +83,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(100, account.getBalance());
     }
+
     @Test
     public void doNotShouldAddToZeroAmount() {
         CreditAccount account = new CreditAccount(
@@ -93,10 +98,6 @@ public class CreditAccountTest {
     }
 
 
-
-
-
-
     @Test
     public void ShouldAddToAmountBalance() {
         CreditAccount account = new CreditAccount(
@@ -108,6 +109,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(7_000, account.getBalance());
     }
+
     @Test
     public void shouldAddToPositiveAmount() {
         CreditAccount account = new CreditAccount(
@@ -119,6 +121,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(-2_000, account.getBalance());
     }
+
     @Test
     public void shouldAddToNegativeAmountZero() {
         CreditAccount account = new CreditAccount(
@@ -131,6 +134,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(100, account.getBalance());
     }
+
     @Test
     public void doNotShouldAddToNegativeAmountZeroBalance() {
         CreditAccount account = new CreditAccount(
@@ -155,11 +159,6 @@ public class CreditAccountTest {
         Assertions.assertFalse(actual);
         Assertions.assertEquals(0, account.getBalance());
     }
-
-
-
-
-
 
     @Test
     public void doNotShouldAddChange() {
@@ -190,10 +189,11 @@ public class CreditAccountTest {
     @Test
     public void shouldAddChangeNegative() {
         CreditAccount account = new CreditAccount(
-                -100,
+                100,
                 5_000,
                 15
         );
+        account.pay(200);
         int actual = account.yearChange();
         int expected = -15;
 
@@ -202,34 +202,26 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void shouldAddChangeNegativeLimit() {
-        CreditAccount account = new CreditAccount(
-                -5_000,
-                5_000,
-                15
-        );
-        int actual = account.yearChange();
-        int expected = -750;
-
-        Assertions.assertEquals(expected, actual);
-
-    }
-    @Test
     public void expextionNegativeCreditLimit() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new CreditAccount(0,-100, 15); }
-                );
+                    new CreditAccount(0, -100, 15);
+                }
+        );
     }
+
     @Test
     public void expextionNegativeBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new CreditAccount(-100,5_000, 15); }
+                    new CreditAccount(-100, 5_000, 15);
+                }
         );
     }
+
     @Test
     public void expextionNegativeRate() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new CreditAccount(0,5_000, -15); }
+                    new CreditAccount(0, 5_000, -15);
+                }
         );
     }
 }

@@ -236,7 +236,7 @@ public class SavingAccountTest {
     /**
      * test exception;
      * initialBalance < minBalance;
-     * баланс меньше минимального
+     * баланс меньше минимального;
      */
     @Test
     public void testIllegalArgumentExceptionInitialBalanceLessThanMinBalance() {
@@ -246,7 +246,7 @@ public class SavingAccountTest {
     /**
      * test exception;
      * initialBalance > maxBalance;
-     * баланс больше максимального
+     * баланс больше максимального;
      */
     @Test
     public void testIllegalArgumentExceptionInitialBalanceMoreThanMaxBalance() {

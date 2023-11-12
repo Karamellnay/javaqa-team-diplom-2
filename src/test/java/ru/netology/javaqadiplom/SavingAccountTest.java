@@ -136,7 +136,7 @@ public class SavingAccountTest {
     public void shouldPayEqualsMinBalance() {
         SavingAccount account = new SavingAccount(
                 7_000,
-                1_000,
+                0,
                 10_000,
                 5
         );

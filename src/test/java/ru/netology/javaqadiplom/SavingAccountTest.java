@@ -277,7 +277,7 @@ public class SavingAccountTest {
         );
 
         int actual = account.yearChange();
-        int expected = 200 / 100 * 15;
+        int expected = 30;
 
         Assertions.assertEquals(expected, actual);
     }
@@ -297,7 +297,7 @@ public class SavingAccountTest {
         );
 
         int actual = account.yearChange();
-        int expected = 0 / 100 * 15;
+        int expected = 0;
 
         Assertions.assertEquals(expected, actual);
     }
@@ -312,9 +312,9 @@ public class SavingAccountTest {
         );
 
         int actual = savingAccount.getMinBalance();
-        int excepted = 200;
+        int expected = 200;
 
-        Assertions.assertEquals(excepted, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -327,9 +327,9 @@ public class SavingAccountTest {
         );
 
         int actual = savingAccount.getMaxBalance();
-        int excepted = 5_000;
+        int expected = 5_000;
 
-        Assertions.assertEquals(excepted, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
 }
